@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort, Sort } from '@angular/material/sort';
+import { ConfirmDialog } from 'src/models/confirmDialog';
 import { Contact } from 'src/models/contact';
 import { AddContactComponent } from '../add-contact/add-contact.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ContactsService } from '../contacts.service';
 import { ContactsDataSource } from './contacts.datasource';
 @Component({
@@ -45,14 +47,21 @@ export class ContactsComponent implements OnInit, AfterViewInit {
       const { action, contactData } = result;
       if (action === 'Add') {
         this.dataSource.addContact(contactData);
-        console.log(action + ' ' + JSON.stringify(contactData));
       } else if (action === 'Update') {
         this.dataSource.updateContact(contactData);
       }
     });
   }
 
-  deleteContact(id: string): void {
-    this.dataSource.deleteContact(id);
+  openDeleteDialog(id: string) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: new ConfirmDialog('Delete', 'Delete this Contact?'),
+    });
+    dialogRef.afterClosed().subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.dataSource.deleteContact(id);
+      }
+    });
   }
 }

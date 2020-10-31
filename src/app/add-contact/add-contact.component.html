@@ -44,5 +44,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button type="submit" mat-button color="primary" [disabled]="!form.valid" (click)="doAction()">{{ addOrEdit }} Contact</button>
+  <button type="submit" mat-button color="primary" cdkFocusInitial [disabled]="!form.valid || form.pristine" (click)="doAction()">{{ addOrEdit }} Contact</button>
 </mat-dialog-actions>

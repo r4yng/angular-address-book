@@ -8,6 +8,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ContactsComponent,
     AddContactComponent,
     NavbarComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -39,16 +39,6 @@ export class AddContactComponent implements OnInit {
     }
   }
 
-  // onSubmit() {
-  //   // TODO: Use EventEmitter with form value
-  //   console.warn(this.newContact.value);
-  //   if (this.addOrEdit === 'Add') {
-  //     this.contactsService.add(this.newContact.value);
-  //   } else if (this.addOrEdit === 'Update') {
-  //     this.contactsService.update({ id: this.data.id, ...this.newContact.value } as Contact);
-  //   }
-  // }
-
   doAction() {
     this.dialogRef.close({
       action: this.addOrEdit,
