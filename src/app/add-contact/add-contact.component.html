@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>{{ addOrEdit }} Contact</h2>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="form">
+<mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="First Name" formControlName="firstName" required>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Last Name" formControlName="lastName" required>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input matInput placeholder="Phone" formControlName="phone">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>email</mat-label>
+    <input matInput placeholder="email" formControlName="email">
+</mat-form-field>
+<div class="address">
+<h3>Address</h3>
+    <mat-form-field>
+    <mat-label>Line 1</mat-label>
+    <input matInput placeholder="Address Line 1" formControlName="address1">
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>Line 2</mat-label>
+    <input matInput placeholder="Address Line 2" formControlName="address2">
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>City</mat-label>
+    <input matInput placeholder="City" formControlName="city">
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>State</mat-label>
+    <input matInput placeholder="State" formControlName="state">
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>Zip Code</mat-label>
+    <input matInput placeholder="Zip Code" formControlName="zipCode">
+    </mat-form-field>
+</div>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button type="submit" mat-button color="primary" [disabled]="!form.valid" (click)="doAction()">{{ addOrEdit }} Contact</button>
+</mat-dialog-actions>

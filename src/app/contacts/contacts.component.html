@@ -1,1 +1,31 @@
-<p>contacts works!</p>
+<div>
+  <button mat-button (click)="openAddEditDialog()">Add</button>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 95%; margin: auto;" matSort>
+
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+    <td mat-cell *matCellDef="let element"> {{ element.firstName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+    <td mat-cell *matCellDef="let element"> {{ element.lastName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="openAddEditDialog(element)">
+        <mat-icon aria-label="Edit">edit</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="deleteContact(element.id)">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+  </tr>
+</table>
